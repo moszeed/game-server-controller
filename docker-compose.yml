@@ -1,0 +1,18 @@
+dev:
+    build: .
+    dockerfile: Dockerfile-Development
+    restart: always
+    container_name: game-server-controller-dev
+    hostname: ${HOSTNAME_VALUE}-dev-docker
+    ports:
+    - "8686:8686"
+    volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - ./bin:/game-server-controller/bin
+    - ./client:/game-server-controller/client
+    - ./config:/game-server-controller/config
+    - ./dist:/game-server-controller/dist
+    - ./src:/game-server-controller/src
+    - ./tests:/game-server-controller/tests
+    - ./package.json:/game-server-controller/package.json
+    - ./.babelrc:/game-server-controller/.babelrc

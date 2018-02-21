@@ -1,0 +1,8 @@
+/config/game-servers/cod4/gamefiles
+/config/game-servers/quake3/pak0.pk3
+node_modules/
+dist/
+tmp/
+npm-debug.log*
+package-lock.json
+yarn.lock

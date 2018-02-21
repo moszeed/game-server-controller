@@ -1,0 +1,12 @@
+version: '2'
+services:
+
+  dedicated:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: openraserver
+    hostname: openraserver
+    container_name: openra
+    ports   :
+      - 1234:1234

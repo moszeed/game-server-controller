@@ -1,0 +1,53 @@
+version: '2'
+services:
+
+  steam:
+    image: wilkesystems/steamcmd:jessie-slim
+
+  cssource:
+    build:
+      context: .
+      dockerfile: Dockerfile-CSSource
+    depends_on:
+      - steam
+    hostname: cssserver 
+    ports   :
+      - 27015:27015
+      - 27015:27015/udp
+    command: ./srcds_run -game cstrike +map de_dust2 -maxplayers 18 -port 27015
+
+  hl2dm:
+    build:
+      context: .
+      dockerfile: Dockerfile-hl2dm
+    depends_on:
+      - steam
+    hostname: hl2dmserver
+    ports   :
+      - 27015:27015
+      - 27015:27015/udp
+    command: ./srcds_run -game hl2mp -maxplayers 12 +map dm_lockdown
+
+  tf2:
+    build:
+      context: .
+      dockerfile: Dockerfile-tf2
+    depends_on:
+      - steam
+    hostname: tf2server
+    ports   :
+      - 27015:27015
+      - 27015:27015/udp
+    command: ./srcds_run -game tf +map ctf_2fort +maxplayers 12
+  
+  l4d2:
+    build:
+      context: .
+      dockerfile: Dockerfile-l4d2
+    depends_on:
+      - steam
+    hostname: l4d2server
+    ports   :
+      - 27015:27015
+      - 27015:27015/udp
+    command: ./srcds_run -console -game left4dead2 -maxplayers 8 +sv_lan 1 +map c5m1_waterfront

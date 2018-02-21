@@ -1,0 +1,23 @@
+version: '2'
+services:
+
+  dedicated:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: q3server
+    hostname: q3server
+    container_name: q3ded
+    ports   :
+      - 27960:27960/udp
+      - 27960:27960
+      - 27965:27965/udp
+      - 27965:27965
+      - 27952:27952/udp
+      - 27952:27952
+      - 27950:27950/udp
+      - 27950:27950
+    volumes:
+      - ./pak0.pk3:/pak0.pk3
+      - ./server.cfg:/home/ioq3srv/.q3a/baseq3/server.cfg
+    command: +exec server.cfg +map q3dm17

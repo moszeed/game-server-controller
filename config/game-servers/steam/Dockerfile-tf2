@@ -1,0 +1,9 @@
+FROM wilkesystems/steamcmd:jessie-slim
+
+RUN steamcmd +login anonymous \
+    +force_install_dir /home/tf2/ \
+    +app_update 232250 validate \
+    +app_update 232250 validate \
+    +quit
+
+WORKDIR /home/tf2/

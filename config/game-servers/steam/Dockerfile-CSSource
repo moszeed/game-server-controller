@@ -1,0 +1,9 @@
+FROM wilkesystems/steamcmd:jessie-slim
+
+RUN steamcmd +login anonymous \
+    +force_install_dir /home/cssource/ \
+    +app_update 232330 validate \
+    +app_update 232330 validate \
+    +quit
+
+WORKDIR /home/cssource/
